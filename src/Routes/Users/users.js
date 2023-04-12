@@ -9,8 +9,27 @@ app.use(bodyParser.json());
 app.use('/', userRoute);
 
 
+// ------------signup--------------
+app.post('/signup', (req, res) => {
+    const { username, password } = req.body;
 
-// ------------sign in--------------
+    const mysql = `INSERT INTO users (username, password) VALUES ('${username}', '${password}')`;
+
+    db.query(mysql, (error, results) => {
+        if (error) {
+            console.error(error);
+            res.status(500).json({
+                message: 'An error occurred while signing up'
+            });
+        } else {
+            res.status(200).render("signin_signup");
+        }
+    });
+});
+
+
+
+// ------------log in--------------
 app.post('/login', (req, res) => {
     const { username, password } = req.body;
 
@@ -36,9 +55,7 @@ app.post('/login', (req, res) => {
             } else {
                 req.session.username = username;
 
-                res.status(200).json({
-                    message: 'Login successful'
-                });
+                res.status(200).render("signin_signup");
             }
         }
     });
@@ -47,7 +64,7 @@ app.post('/login', (req, res) => {
 
 
 
-// ------------sign up--------------
+// ------------log out--------------
 
 app.post('/logout', (req, res) => {
     // Destroy the session on the server here
@@ -58,9 +75,7 @@ app.post('/logout', (req, res) => {
                 message: 'An error occurred while logging out'
             });
         } else {
-            res.status(200).json({
-                message: 'Logout successful'
-            });
+            res.status(200).render("signin_signup");
         }
     });
 });
@@ -84,7 +99,7 @@ userRoute.get('/my-courses', (req, res) => {
             console.error(err);
             res.status(500).send(err.message);
         } else {
-            res.json(result.rows);
+            res.status(200).render("course_details")
         }
     });
 });
@@ -103,7 +118,7 @@ userRoute.post('/enroll-course', (req, res) => {
             console.error(err);
             res.status(500).send(err.message);
         } else {
-            res.json({ message: `You have successfully enrolled in course ${courseId}` });
+            res.status(200).render("enroll")
         }
     });
 });
