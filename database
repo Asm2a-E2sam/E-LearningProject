@@ -1,28 +1,22 @@
 SHOW DATABASES;
-CREATE DATABASE IF NOT EXISTS sblog;
+CREATE DATABASE IF NOT EXISTS e-learing;
 USE e-learing;
 
 CREATE TABLE IF NOT EXISTS users{
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(60) NOT NULL,
     email VARCHAR(60) NOT NULL,
-    password VARCHAR(20) NOT NULL,
+    password VARCHAR(20) NOT NULL
 }
 
-CREATE TABLE IF NOT EXISTS trainers{
-    name VARCHAR(50) NOT NULL,
-    age INT NOT NULL,
-    email VARCHAR(50) NOT NULL,
-    id INT NOT NULL,
-    subject VARCHAR(50) NOT NULL;
-}
+
 
 CREATE TABLE IF NOT EXISTS courses{
     name VARCHAR(60) NOT NULL,
     id INT AUTO_INCREMENT PRIMARY KEY,
     desription TEXT NOT NULL,
     image VARCHAR(120),
-    price INT NOT NULL,
+    price INT NOT NULL
 }
 
 CREATE TABLE IF NOT EXISTS enrollment{
@@ -30,37 +24,9 @@ CREATE TABLE IF NOT EXISTS enrollment{
     user_id INT NOT NULL,
     courses_id INT NOT NULL,
     FOREIGN KEY (user_id) REFERENCES user(id)
+    FOREIGN KEY (courses_id) REFERENCES courses(id)
 }
 
-CREATE TABLE IF NOT EXISTS assignments{
-    trainer_id INT NOT NULL,
-    name VARCHAR(50) NOT NULL,
-    trainer VARCHAR(50) NOT NULL,
-    id INT NOT NULL,
-    user_id INT NOT NULL,
-}
-
-
-CREATE TABLE IF NOT EXISTS grades{
-    id INT NOT NULL,
-    name VARCHAR(50) NOT NULL,
-    grade INT NOT NULL;
-}
-
-
-CREATE TABLE IF NOT EXISTS exam_result{
-    trainer_id INT NOT NULL,
-    name VARCHAR(50) NOT NULL,
-    trainer VARCHAR(50) NOT NULL,
-    id INT NOT NULL,
-    user_id INT NOT NULL,
-}
-
-CREATE TABLE IF NOT EXISTS get_certificate{
-    exam_result INT NOT NULL,
-    user_id INT NOT NULL,
-    course_id INT NOT NUll,
-}
 
 
 SHOW TABLES;
