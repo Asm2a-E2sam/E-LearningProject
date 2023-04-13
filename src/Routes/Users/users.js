@@ -11,16 +11,15 @@ app.use('/', userRoute);
 
 // ------------signup--------------
 app.post('/signup', (req, res) => {
-    const { username, password } = req.body;
+    const { name, password } = req.body;
 
-    const mysql = `INSERT INTO users (username, password) VALUES ('${username}', '${password}')`;
+    const mysql = `INSERT INTO users (name, password) VALUES ('${name}', '${password}')`;
 
     db.query(mysql, (error, results) => {
         if (error) {
             console.error(error);
-            res.status(500).json({
-                message: 'An error occurred while signing up'
-            });
+            alert('An error occurred while signing up');
+
         } else {
             res.status(200).render("signin_signup");
         }
@@ -30,30 +29,27 @@ app.post('/signup', (req, res) => {
 
 
 // ------------log in--------------
-app.post('/login', (req, res) => {
-    const { username, password } = req.body;
+app.get('/signup', (req, res) => {
+    const { name, password } = req.body;
 
-    const mysql = `SELECT * FROM users WHERE username = '${username}'`;
+    const mysql = `SELECT * FROM users WHERE name = '${name}'`;
 
     db.query(mysql, (error, results) => {
         if (error) {
             console.error(error);
-            res.status(500).json({
-                message: 'An error occurred while logging in'
-            });
+            alert('An error occurred while logging up');
+
         } else {
             const user = results[0];
 
             if (!user) {
-                res.status(401).json({
-                    message: 'Invalid username or password'
-                });
+                alert('Invalid username or password');
+
             } else if (user.password !== password) {
-                res.status(401).json({
-                    message: 'Invalid password'
-                });
+                alert('Invalid password');
+
             } else {
-                req.session.username = username;
+                req.session.name = name;
 
                 res.status(200).render("signin_signup");
             }
@@ -71,9 +67,8 @@ app.post('/logout', (req, res) => {
     req.session.destroy((err) => {
         if (err) {
             console.error(err);
-            res.status(500).json({
-                message: 'An error occurred while logging out'
-            });
+            alert('An error occurred while logging out');
+
         } else {
             res.status(200).render("signin_signup");
         }
@@ -91,8 +86,8 @@ userRoute.get('/my-courses', (req, res) => {
     const query = `
     SELECT id, name
     FROM courses
-    INNER JOIN enrollments ON id = course_id
-    WHERE user_id = $1;
+    INNER JOIN enrollment ON id = courses_id
+    WHERE user_id = ${userId};
   `;
     pool.query(query, [userId], (err, result) => {
         if (err) {
@@ -104,14 +99,15 @@ userRoute.get('/my-courses', (req, res) => {
     });
 });
 
+
 // ------------------------enroll course----------------
 userRoute.post('/enroll-course', (req, res) => {
     const userId = req.user.id;
     const { courseId } = req.body;
 
     const query = `
-    INSERT INTO enrollments (user_id, course_id)
-    VALUES ($1, $2);
+    INSERT INTO enrollment (user_id, courses_id)
+    VALUES ('${userId}', '${courseId}');
   `;
     pool.query(query, [userId, courseId], (err) => {
         if (err) {
