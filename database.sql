@@ -1,6 +1,5 @@
-SHOW DATABASES;
-CREATE DATABASE IF NOT EXISTS e-learing;
-USE e-learing;
+CREATE DATABASE IF NOT EXISTS e_learning;
+USE e_learning;
 
 CREATE TABLE IF NOT EXISTS users(
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -22,15 +21,11 @@ CREATE TABLE IF NOT EXISTS courses(
 CREATE TABLE IF NOT EXISTS enrollment(
     id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT NOT NULL,
-    courses_id INT NOT NULL,
-    FOREIGN KEY (user_id) REFERENCES user(id)
-    FOREIGN KEY (courses_id) REFERENCES courses(id)
+    courses_id INT NOT NULL 
 );
 
+ALTER TABLE enrollment
+ADD FOREIGN KEY (user_id) REFERENCES user(id);
 
-
-SHOW TABLES;
-DESCRIBE users;
-DESCRIBE courses;
-DESCRIBE enrollment;
-
+ALTER TABLE enrollment
+ADD  FOREIGN KEY (courses_id) REFERENCES courses(id);
