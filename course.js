@@ -28,4 +28,8 @@ const Course = sequelize.define('courses', {
     }
 });
 
+const programming = await Course.create({ name: "programming", id: 1, description: "programming with c++", image: "", price: 100 });
+
 Course.sync({ force: true });
+
+module.exports = Course;
