@@ -22,4 +22,6 @@ const User = sequelize.define("users", {
     }
 });
 
+const ahmed = await Course.create({ id: 1 , name: "ahmed" , email: "ahmed1232@gmail.com", password: "1sd23eS"});
+
 module.exports = User;
