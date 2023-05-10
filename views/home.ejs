@@ -1,31 +1,11 @@
 <head>
+    <link rel="stylesheet" href="style2.css">
     <title>Home</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="styles/home.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto Sans Lepcha">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    
+    <%- include('../partials/links.ejs') %>
 </head>
 
 <body id="home">
-    <nav class="navbar_top" style="background: #0367a6;">
-        <div class="logo">School</div>
-        <ul class="nav-links">
-            <input type="checkbox" id="checkbox_toggle" />
-            <label for="checkbox_toggle" class="bar_icon">&#9776;</label>
-            <div class="menu">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#courses">Courses</a></li>
-                <li><a href="/signin_signup">Sign up</a></li>
-                <li><a href="#about">About</a></li>
-            </div>
-        </ul>
-    </nav>
+    <%- include('../partials/nav.ejs') %>
     <div>
         <div class="overlay" style="opacity: 0.8;">
             <img style="width:100%; opacity: 1 !important;" src="https://i.postimg.cc/pX1p04Jj/R-1.jpg" alt="">
@@ -49,13 +29,6 @@
                     </div>
                 </div>
                 <div class="row text-center">
-                    <!-- <?php require_once "connection.php";
-                    require_once "Student.php";
-                    $select = $connection->prepare('SELECT * FROM student');
-                    $select->execute();
-                    $students = $select->fetchAll(PDO::FETCH_CLASS, 'Student');
-                    foreach($students as $student){ 
-                        ?> -->
                     <div class="col-sm-4">
                         <!-- <img src="admin/images/<?= $student->std_img ?>" class="img-rounded img_border_double" width="50%" alt=""/>
                     <h3><?= $student->std_name ?></h3>

@@ -1,4 +1,3 @@
-
 const db = require("../../mysql-connector");
 
 function run_query(query, data = []) {
@@ -31,4 +30,29 @@ module.exports = {
         query_runner: run_query,
         create_error_object,
         done
+}
+
+function insertObjPromise(model, data) {
+        return new Promise((resolve, reject) => {
+                model.create({ ...data })
+                .try((res) => resolve(res.dataValues)) 
+                .catch ((err) => reject.message)
+        });
+}
+
+async function insertObjAsync(model, data) {
+        const res = await model.create({ ...data });
+        return res.dataValues;
+}
+
+function updateObj(){
+
+}
+
+function deleteObj(){
+        
+}
+
+function selectObj(){
+        
 }

@@ -1,11 +1,8 @@
+const sequelize = require("../sequelize");
 const { Sequelize, DataTypes } = require('sequelize');
+const User = require("./User");
 
-const sequelize = new Sequelize('database', 'username', 'password', {
-    host: 'localhost',
-    dialect: 'mysql'
-});
-
-const Course = sequelize.define('courses', {
+Course = sequelize.define('course', {
     name: {
         type: DataTypes.STRING(60),
         allowNull: false
@@ -26,10 +23,13 @@ const Course = sequelize.define('courses', {
         type: DataTypes.INTEGER,
         allowNull: false
     }
-});
+},{ tableName: "courses", timestamps: false});
 
-const programming = await Course.create({ name: "programming", id: 1, description: "programming with c++", image: "", price: 100 });
+try{
+    User.findAll();
+}catch(error){
+    console.log(error.message);
+}
 
 Course.sync({ force: true });
-
-module.exports = Course;
+module.exports = Course ;

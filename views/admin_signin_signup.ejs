@@ -1,8 +1,13 @@
-<!DOCTYPE html>
+v  <!DOCTYPE html>
 <html lang="en">
 
 <head>
 	<%- include('../partials/links.ejs') %>
+	<style>
+		.overlay {
+    		background: url("https://i.postimg.cc/t40WwrLr/R.jpg") !important;
+		}	
+	</style>
 	<link rel="stylesheet" href="style1.css">
     <title>Sign in</title>    
 </head>
@@ -12,7 +17,7 @@
 	<div class="container right-panel-active" style="height:500px;">
 		<!-- Sign Up -->
 		<div class="container__form container--signup">
-			<form action="/users/add" class="form" id="form1" method="post">
+			<form action="/register/admin" class="form" id="form1" method="post">
 				<h2 class="form__title">Sign Up</h2>
 				<input type="text" placeholder="name" class="input" name="name" required/>
 				<input type="text" placeholder="Email" class="input" name="email" required/>
@@ -23,7 +28,7 @@
 
 		<!-- Sign In -->
 		<div class="container__form container--signin">
-			<form action="/users/" class="form" id="form2" method="get">
+			<form action="/login/admin" class="form" id="form2" method="get">
 				<h2 class="form__title">Sign In</h2>
 				<input type="text" placeholder="Email" class="input" name="email" required/>
 				<input type="password" placeholder="Password" class="input" name="password" required/>
@@ -35,14 +40,12 @@
 		<div class="container__overlay">
 			<div class="overlay">
 				<div class="overlay__panel overlay--left">
-					<button class="btn" id="signIn">Sign In</button>
-					<br>
-					<button class="btn" ><a href="/admins" style="color: #fff;"> Sign Up As Admin</a></button>
+					<button class="btn" id="signIn">Sign In</button><br>
+					<button class="btn" ><a href="/register/user" style="color: #fff;"> Sign Up As User</a></button>
 				</div>
 				<div class="overlay__panel overlay--right">
-					<button class="btn" id="signUp">Sign Up</button>
-					<br>
-					<button class="btn" > <a href="/admins" style="color: #fff;"> Sign Up As Admin</a></button>
+					<button class="btn" id="signUp">Sign Up</button><br>
+					<button class="btn" ><a href="/register/user" style="color: #fff;"> Sign in As User</a></button>
 				</div>
 			</div>
 		</div>

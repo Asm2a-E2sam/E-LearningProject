@@ -1,22 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="./styles/style2.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto Sans Lepcha">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <%- include('../partials/links.ejs') %>
+    <link rel="stylesheet" href="style2.css">
     <title>My Courses</title>
+    
 </head>
 <body>
-    
     <div class="our-faculty" id="courses">
         <div class="overlay">
-            <form action="/logout" method="get" class="p-2">
+            <form action="/" method="get" class="p-2">
                 <input type="submit" value="Log Out" class="btn btn-light">
             </form>
             <div class="container">
@@ -27,7 +20,7 @@
                 </div>
                 <div class="row text-center">
                     <div class="col-sm-4">
-                        <img src="" class="img-rounded img_border_double" width="50%" alt=""/>
+                        <img src="https://th.bing.com/th/id/R.97d20fbfdf99f6ae99229a9646803d56?rik=VhUjDKMhj2%2bULw&pid=ImgRaw&r=0" class="img-rounded img_border_double" width="50%" alt=""/>
                     <h3>HTML</h3>
                     <hr class="hr_5" />
                     <h4>
@@ -57,7 +50,8 @@
                     <hr class="hr_5" />
                     <h4>
                         <span style="color:#0367a6;"> Course ID:</span> 1  <br />
-                        <span style="color:#0367a6;">Course Description:</span> Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum aut suscipit doloribus quasi expedita enim tempore.<br/>
+                        <span style="color:#0367a6;">Course Description:</span> Lorem ipsum dolor sit amet consectetur ....<br/>
+                        <a href="/courses/"></a>
                     </h4>
                 </div>                     
                 </div>

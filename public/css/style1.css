@@ -107,7 +107,7 @@ body {
     opacity: 0.6;
     background-attachment: fixed;
     background-position: center;
-    background-repeat: no-repeat;
+    background-repeat: no-repeat !important;
     background-size: cover;
     height: 100%;
     left: -100%;
