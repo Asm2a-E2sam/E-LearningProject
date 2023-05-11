@@ -2,8 +2,8 @@ const { Sequelize, DataTypes } = require('sequelize');
 const db = require("./src/helpers/db-functions");
 
 const sequelize = new Sequelize('e_learning', 'root', '', {
-    host: 'localhost',
-    port: 8080,
+    port: process.env.MYSQL_PORT,
+    host: process.env.MYSQL_HOSTNAME,
     dialect: 'mysql',
     logging: console.log
 });

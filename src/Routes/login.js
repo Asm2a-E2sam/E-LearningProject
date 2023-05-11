@@ -44,7 +44,7 @@ loginRoute.get("/", async (req, res) => {
   res.status(200).render("signin_signup");
 });
 
-LoginRoute.post("/user", auth, async (req, res) => {
+loginRoute.post("/user", auth, async (req, res) => {
   req.session.user = req.user;
   res.cookie("session_id", req.session.id, {
     maxAge: 60 * 60 * 24 * 7,
@@ -53,7 +53,7 @@ LoginRoute.post("/user", auth, async (req, res) => {
   res.status(200).redirect(`/user/${req.user.id}`);
 });
 
-LoginRoute.post("/admin", auth, async (req, res) => {
+loginRoute.post("/admin", auth, async (req, res) => {
   req.session.user = req.user;
   res.cookie("session_id", req.session.id, {
     maxAge: 60 * 60 * 24 * 7,
@@ -62,4 +62,4 @@ LoginRoute.post("/admin", auth, async (req, res) => {
   res.status(200).redirect(`/admin/${req.user.id}`);
 });
 
-module.exports = LoginRoute;
+module.exports = loginRoute;

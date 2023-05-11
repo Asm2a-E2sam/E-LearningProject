@@ -5,4 +5,4 @@ const Course = require("./Course");
 
 User.belongsToMany(Course, {through : "enrollment", sourcekey: "id"});
 
-module.exports = Enrollment;
+// module.exports = Enrollment;

@@ -1,6 +1,6 @@
 const express = require("express")
 const bodyParser = require("body-parser");
-const HandleDBModel = require("./src/helpers/Model.handler");
+const { HandleDBModel } = require("./src/helpers/Model.handler");
 const multer = require("multer");
  const HomeRouter = require("./src/Routes/API/Main");
 const forms = multer();
@@ -11,7 +11,7 @@ const MySQLStore = require("express-mysql-session")(expressSession);
 const mysql = require("mysql");
 const {join: pathjo} = require("path");
 
-const RegisterRoute = require("./src/Routes/register");
+// const RegisterRoute = require("./src/Routes/register");
 const LoginRoute = require("./src/Routes/login");
 const LogoutRoute = require("./src/Routes/logout");
 const CourseRoute = require("./src/Routes/course");
@@ -38,7 +38,7 @@ app.use("/users", UserRoute);
 app.use("/courses", CourseRoute);
 app.use("/admins", AdminRoute);
 app.use("/api", APIRouter);
-app.use("/register", RegisterRoute);
+// app.use("/register", RegisterRoute);
 app.use("/login", LoginRoute);
 app.use("/logout", LogoutRoute);
 
