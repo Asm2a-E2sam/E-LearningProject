@@ -31,5 +31,5 @@ try{
     console.log(error.message);
 }
 
-Course.sync({ force: true });
+Course.sync({ alter: true });
 module.exports = Course ;
