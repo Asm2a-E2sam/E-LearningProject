@@ -3,20 +3,20 @@
 
 <head>
 	<%- include('../partials/links.ejs') %>
-	<link rel="stylesheet" href="style1.css">
-    <title>Sign in</title>    
+		<link rel="stylesheet" href="style1.css">
+		<title>Sign in</title>
 </head>
 
 <body>
-    <div class="btn"><a href="/" style="color: #fff;">Home</a></div>
+	<div class="btn"><a href="/" style="color: #fff;">Home</a></div>
 	<div class="container right-panel-active" style="height:500px;">
 		<!-- Sign Up -->
 		<div class="container__form container--signup">
-			<form action="/users/add" class="form" id="form1" method="post">
+			<form class="form" id="form1" method="post">
 				<h2 class="form__title">Sign Up</h2>
-				<input type="text" placeholder="name" class="input" name="name" required/>
-				<input type="text" placeholder="Email" class="input" name="email" required/>
-				<input type="password" placeholder="Password" class="input" name="password" required/>
+				<input type="text" placeholder="name" class="input" name="name" required />
+				<input type="text" placeholder="Email" class="input" name="email" required />
+				<input type="password" placeholder="Password" class="input" name="password" required />
 				<button class="btn">Sign Up</button>
 			</form>
 		</div>
@@ -25,8 +25,8 @@
 		<div class="container__form container--signin">
 			<form action="/users/" class="form" id="form2" method="get">
 				<h2 class="form__title">Sign In</h2>
-				<input type="text" placeholder="Email" class="input" name="email" required/>
-				<input type="password" placeholder="Password" class="input" name="password" required/>
+				<input type="text" placeholder="Email" class="input" name="email" required />
+				<input type="password" placeholder="Password" class="input" name="password" required />
 				<button class="btn">Sign In</button>
 			</form>
 		</div>
@@ -37,12 +37,12 @@
 				<div class="overlay__panel overlay--left">
 					<button class="btn" id="signIn">Sign In</button>
 					<br>
-					<button class="btn" ><a href="/admins" style="color: #fff;"> Sign Up As Admin</a></button>
+					<button class="btn"><a href="/admins" style="color: #fff;"> Sign Up As Admin</a></button>
 				</div>
 				<div class="overlay__panel overlay--right">
 					<button class="btn" id="signUp">Sign Up</button>
 					<br>
-					<button class="btn" > <a href="/admins" style="color: #fff;"> Sign Up As Admin</a></button>
+					<button class="btn"> <a href="/admins" style="color: #fff;"> Sign Up As Admin</a></button>
 				</div>
 			</div>
 		</div>
@@ -62,6 +62,20 @@
 		signUpBtn.addEventListener("click", () => {
 			container.classList.add("right-panel-active");
 		});
+
+		const form = document.getElementById("form1");
+		function sign_up_user(eve) {
+			eve.preventDefault();
+			const user_info = new FormData(form);
+			fetch("/users/", {
+				method: "POST",
+				body: user_info
+			}).then(data => {
+				console.log(data);
+			})
+		}
+
+		form.addEventListener("submit", sign_up_user);
 	</script>
 </body>
 

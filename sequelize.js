@@ -5,7 +5,11 @@ const sequelize = new Sequelize('e_learning', 'root', '', {
     port: process.env.MYSQL_PORT,
     host: process.env.MYSQL_HOSTNAME,
     dialect: 'mysql',
-    logging: console.log
+    logging: false
+});
+
+sequelize.sync({
+    force: true
 });
 
 module.exports = sequelize;

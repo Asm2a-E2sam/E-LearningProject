@@ -14,13 +14,13 @@ RegisterRoute.get("/", (req, res) => {
   res.status(200).render("register");
 });
 
-RegisterRoute.post("/admin", hashPassword, (req, res) => {
+RegisterRoute.post("/admin", changePass, (req, res) => {
   Admin.create({ ...req.body })
     .then(() => res.status(200).redirect("/login"))
     .catch((err) => res.status(500).render("error"));
 });
 
-RegisterRoute.post("/user", hashPassword, (req, res) => {
+RegisterRoute.post("/user", changePass, (req, res) => {
   User.create({ ...req.body })
     .then(() => res.status(200).redirect("/login"))
     .catch((err) => res.status(500).render("error"));

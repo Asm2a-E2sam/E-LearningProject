@@ -25,11 +25,4 @@ Course = sequelize.define('course', {
     }
 },{ tableName: "courses", timestamps: false});
 
-try{
-    User.findAll();
-}catch(error){
-    console.log(error.message);
-}
-
-Course.sync({ alter: true });
 module.exports = Course ;
